@@ -1,0 +1,28 @@
+{
+  "name": "netfight-server",
+  "version": "0.0.0",
+  "description": "Server application for Netfight hackathon project.",
+  "dependencies": {
+    "express": "*",
+    "hbs": "*",
+    "http": "*",
+    "mongoose": "*"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:MaybeNot/netfight-server.git"
+  },
+  "keywords": [
+    "netfight"
+  ],
+  "author": "Adam Schaub",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MaybeNot/netfight-server/issues"
+  }
+}
