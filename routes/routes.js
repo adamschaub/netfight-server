@@ -30,7 +30,7 @@ module.exports = function(app) {
        }
      */
     app.post('/battle_results', function(req, res, next) {
-        var results = req.body.fighters;
+        var fighters = req.body.fighters;
         for(var f in fighters) {
             var won = f.won;
             delete f.won;
