@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Server application for Netfight hackathon project.",
   "dependencies": {
-    "express": "*",
+    "express": "3.*",
     "hbs": "*",
     "http": "*",
     "mongoose": "*"

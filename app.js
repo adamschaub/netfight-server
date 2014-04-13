@@ -4,7 +4,6 @@
 var express = require('express');
 var app = express();
 var hbs = require('hbs');
-var flash = require('connect-flash');
 var mongoose = require('mongoose');
 
 ///////////////////////////////////////
@@ -22,8 +21,13 @@ mongoose.connect(dbConfig.uri, function(err) {
 app.use(express.static(__dirname + '/public'));
 hbs.registerPartials(__dirname + "/views/partials"); 
 
-app.set('view engine', 'html');
-app.engine('html', hbs.__express); //set handlebars to render page
+app.configure(function(){
+    app.use(express.logger('dev'));
+    app.use(express.bodyParser());
+
+    app.set('view engine', 'html');
+    app.engine('html', hbs.__express); //set handlebars to render page
+});
 
 require('./routes/routes.js')(app);
 
