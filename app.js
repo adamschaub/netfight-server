@@ -4,6 +4,7 @@
 var express = require('express');
 var app = express();
 var hbs = require('hbs');
+var flash = require('connect-flash');
 var mongoose = require('mongoose');
 
 ///////////////////////////////////////
@@ -21,24 +22,12 @@ mongoose.connect(dbConfig.uri, function(err) {
 app.use(express.static(__dirname + '/public'));
 hbs.registerPartials(__dirname + "/views/partials"); 
 
-app.configure(function(){
-    app.use(express.logger('dev'));
-    app.use(express.cookieParser());
-    app.use(express.bodyParser());
-
-    app.set('view engine', 'html');
-
-    app.use(express.session({secret: cookieStr, cookie: {maxAge: cookieAge}}));
-    app.use(passport.initialize());
-    app.use(passport.session());
-    app.engine('html', hbs.__express); //set handlebars to render pages   
-    app.use(flash());
-});
+app.set('view engine', 'html');
+app.engine('html', hbs.__express); //set handlebars to render page
 
 require('./routes/routes.js')(app);
 
-//var port = process.env.PORT || 5001;
-var port = 5001;
+var port = process.env.PORT || 5000;
 app.listen(port, function(){
     console.log("HTTP listening on " + port);
 });
